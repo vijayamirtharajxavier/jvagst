@@ -150,7 +150,7 @@
 
             <a class="collapse-item" href="<?php echo base_url();?>reports/gstr2b">GSTR2B Return</a>
             <a class="collapse-item" href="<?php echo base_url();?>reports/gstr3b">GSTR3B Return</a>
-						<a class="collapse-item" href="<?php echo base_url();?>reports/gstreturnstatus">GST-Return Status</a>
+						<a class="collapse-item" href="<?php echo base_url();?>reports/gstr9return">GSTR9-Annual Return</a>
 
            <!-- <a class="collapse-item" href="<?php echo base_url();?>reports/gstr3bsum">GSTR3B Summary</a>
 	-->

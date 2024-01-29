@@ -64,6 +64,12 @@ $this->headers = array(
         $data['page'] = 'GSTR3B Return';
         $this->load->view('gstr3b', $data);
     }
+    public function gstr9return()
+    {
+        $data = array();
+        $data['page'] = 'GSTR9 Annual Return';
+        $this->load->view('gstr9_annualreturn', $data);
+    }
 
     public function gstr3bsum()
     {
@@ -1870,7 +1876,32 @@ $output = json_encode($finalmerge,JSON_NUMERIC_CHECK | JSON_UNESCAPED_SLASHES | 
 
 }
 
-
+public function fetch_gstr9b2b()
+{
+  $flag = $this->input->get('flag');
+  $compId = $this->session->userdata('id');
+  $yr=$this->input->get('yr');
+  $finyear = explode("-", $this->session->userdata('finyear'));
+  $url= $this->config->item("api_url") . "/api/reports/getgstr9data";
+  $data_post = array("type"=>"B2B","yr"=>$yr,"compId"=>$compId,"gtype"=>"b2b");
+  
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL,$url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data_post));
+  
+    $gstr9response = curl_exec($ch);
+    //$result = json_decode($response);
+   //echo $ledgerresponse;
+  //var_dump($gstr1response);
+  curl_close($ch); // Close the connection
+  $gst1maindata = json_decode($gstr9response,true);
+  echo $gstr9response;
+  
+    
+}
 
 
 public function fetch_gstr1b2b()
