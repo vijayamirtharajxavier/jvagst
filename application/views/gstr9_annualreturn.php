@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </a>
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                       <!--<div class="dropdown-header">Dropdown Header:</div>-->
-                      <a class="dropdown-item" onclick="exp_json();">Export to Json</a>
+                      <a class="dropdown-item" onclick="exp_gstr9json();">Export to Json</a>
                       <!--<a class="dropdown-item" href="<?php echo base_url();?>#">Another action</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="<?php echo base_url();?>#">Something else here</a> 
@@ -103,7 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
             <div class="card-body">
               <div class="table-responsive">
-            <div class="card-header">B2B Invoices</div>
+            <div class="card-header">Table 4 - B2B Invoices</div>
             <table id="gstr9b2blistTable" class="table table-striped table-bordered dt-responsive nowrap">
               <thead>
                 <tr>
@@ -147,21 +147,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
             <div class="card-body">
               <div class="table-responsive">
-            <div class="card-header">B2B Credit / Debit Note`s</div>
-            <table id="gstr1cdnrlistTable" class="table table-striped table-bordered dt-responsive nowrap">
+            <div class="card-header">Table 4 - B2B Credit / Debit Note`s</div>
+            <table id="gstr9cdnrlistTable" class="table table-striped table-bordered dt-responsive nowrap">
               <thead>
                 <tr>
-                <th>GSTIN</th>
-                <th>NAME</th>
-                <th>DB/CR NOTE #</th>
-								<th>NOTE TYPE</th>
-                <th>DATE</th>
-                <th>GSTPC</th>
+                <th>NOTE</th>
                 <th>TAXABL AMT</th>
                 <th>IGST</th>
                 <th>CGST</th>
                 <th>SGST</th>
-                <th>NET AMOUNT</th>
+                <th>CESS</th>
                 </tr>
               </thead>
               <tbody>
@@ -200,20 +195,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
             <div class="card-body">
               <div class="table-responsive">
-            <div class="card-header">B2C Invoices</div>
-            <table id="gstr1b2clistTable" class="table">
+            <div class="card-header">Table 4 - B2C Invoices</div>
+            <table id="gstr9b2clistTable" class="table">
               <thead>
                 <tr>
-                <th>STATECODE</th>
-                <th>NAME</th>
-                <th>INVOICE #</th>
-                <th>DATE</th>
-                <th>GSTPC</th>
                 <th>TAXABL AMT</th>
                 <th>IGST</th>
                 <th>CGST</th>
                 <th>SGST</th>
-                <th>NET AMOUNT</th>
+                <th>CESS</th>
                 </tr>
               </thead>
               <tbody>
@@ -243,14 +233,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
             <div class="card-body">
               <div class="table-responsive">
-            <div class="card-header">12 - HSN-wise summary of outward supplies</div>
-            <table id="gstr1hsnsaclistTable" class="table">
+            <div class="card-header">Table 17 - HSN-wise summary of outward supplies</div>
+            <table id="gstr9hsnsaclistTable" class="table">
               <thead>
                 <tr>
+                <th>#</th>
                 <th>HSNSAC</th>
                 <th>UQC</th>
                 <th>QTY</th>
                 <th>TAXABLE VALUE</th>
+                <th>IS CONCESSTIONAL ?</th>
                 <th>GSTPC</th>
                 <th>IGST</th>
                 <th>CGST</th>
