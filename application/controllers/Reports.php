@@ -1906,12 +1906,17 @@ public function gstr9b2bJson()
 {
 
 //  $flag = $this->input->get('flag');
-  $stype = $this->input->get('stype');
+
+$comp_gstin = $this->session->userdata('gstin');
+$stype = $this->input->get('stype');
   $compId = $this->session->userdata('id');
   $yr=$this->input->get('yr');
+  $exp_yr = explode("-",$yr);
+  $fy_yr = intval($exp_yr[0])+1;
+  $fp_yr = "03" . $fy_yr;
   $finyear = explode("-", $this->session->userdata('finyear'));
   $url= $this->config->item("api_url") . "/api/reports/getgstr9jsondata";
-  $data_post = array("type"=>$stype,"yr"=>$yr,"compId"=>$compId,"gtype"=>$stype);
+  $data_post = array("type"=>$stype,"yr"=>$yr,"compId"=>$compId,"gtype"=>$stype,"comp_gstin"=>$comp_gstin,"fp"=>$fp_yr);
   
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL,$url);
